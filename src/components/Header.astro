@@ -1,0 +1,132 @@
+<header class="header">
+    <h1 class="logo">Portafolio Kyoz</h1>
+    <label for="menu" class="label_menu">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="35"
+            fill="currentColor"
+            class="svg_menu"
+            viewBox="0 0 16 16"
+        >
+            <path
+                fill-rule="evenodd"
+                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+            ></path>
+        </svg>
+        <span class="span_menu">Toggle menu</span>
+    </label>
+    <input type="checkbox" id="menu" class="input_menu" />
+    <nav class="nav">
+        <ul class="ul">
+            <button class="button_tema">Tema</button>
+            <li class="li">
+                <a href="/" class="a">SOBRE MI</a>
+            </li>
+            <li class="li">
+                <a href="/projects" class="a">PROYECTOS</a>
+            </li>
+            <li class="li">
+                <a href="/contact" class="a">CONTACTO</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+<style>
+    :root {
+        --bg-green-700: #047857;
+        --color-light: #1f2937;
+        --color-dark: #f3f4f6;
+        --color-light-hover: #f87171;
+        --color-dark-hover: #f87171;
+    }
+
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 80px;
+        background-color: rgb(22, 54, 54);
+    }
+
+    .logo {
+        color: light-dark(var(--color-light), var(--color-dark));
+
+        &:hover {
+            color: light-dark(
+                var(--color-light-hover),
+                var(--color-dark-hover)
+            );
+        }
+    }
+
+    .label_menu {
+        cursor: pointer;
+
+        &:hover {
+            color: light-dark(
+                var(--color-light-hover),
+                var(--color-dark-hover)
+            );
+        }
+    }
+
+    .svg_menu {
+    }
+
+    .span_menu {
+        position: absolute;
+        overflow: hidden;
+        width: 0;
+        height: 0;
+    }
+
+    .input_menu {
+        display: none;
+    }
+
+    .nav {
+        position: absolute;
+        top: 80px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: calc(100vh - 80px);
+        background-color: red;
+    }
+
+    .input_menu:checked + .nav {
+        display: flex;
+    }
+
+    .ul {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: space-evenly;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        background-color: rgb(110, 45, 38);
+    }
+
+    .button_tema {
+        width: 40px;
+        height: 40px;
+    }
+
+    .li {
+        list-style: none;
+    }
+
+    .a {
+        color: white;
+        text-decoration: none;
+
+        &:hover {
+            color: #f87171;
+        }
+    }
+</style>
