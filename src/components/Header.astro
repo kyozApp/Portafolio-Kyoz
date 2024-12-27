@@ -19,7 +19,6 @@
     <input type="checkbox" id="menu" class="input_menu" />
     <nav class="nav">
         <ul class="ul">
-            <button class="button_tema">Tema</button>
             <li class="li">
                 <a href="/" class="a">SOBRE MI</a>
             </li>
@@ -29,17 +28,71 @@
             <li class="li">
                 <a href="/contact" class="a">CONTACTO</a>
             </li>
+            <section class="section_scheme">
+                <span class="span_scheme">TEMA: </span>
+                <fieldset class="fieldset_scheme">
+                    <label class="label_scheme">
+                        <input
+                            name="color-scheme"
+                            type="radio"
+                            value="light dark"
+                            checked
+                        />SISTEMA
+                    </label>
+                    <label class="label_scheme">
+                        <input
+                            name="color-scheme"
+                            type="radio"
+                            value="light"
+                        />CLARO
+                    </label>
+                    <label class="label_scheme">
+                        <input
+                            name="color-scheme"
+                            type="radio"
+                            value="dark"
+                        />OSCURO
+                    </label>
+                </fieldset>
+            </section>
         </ul>
     </nav>
 </header>
 
+<script is:inline>
+    // Función para actualizar el tema en el documento y localStorage
+    function updateTheme(theme) {
+        // Establecer el tema en el HTML
+        document.documentElement.dataset.theme = theme;
+        // Guardar la preferencia en localStorage
+        localStorage.setItem("theme", theme);
+    }
+
+    // Detectar cambio en la selección del tema
+    const themeRadios = document.querySelectorAll('input[name="color-scheme"]');
+    themeRadios.forEach((radio) => {
+        radio.addEventListener("change", (event) => {
+            updateTheme(event.target.value);
+        });
+    });
+
+    // Recuperar y aplicar el tema guardado al cargar la página
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        updateTheme(savedTheme);
+        // Marcar el radio correspondiente como seleccionado
+        document.querySelector(
+            `input[name="color-scheme"][value="${savedTheme}"]`,
+        ).checked = true;
+    }
+</script>
+
 <style>
     :root {
-        --bg-green-700: #047857;
-        --color-light: #1f2937;
-        --color-dark: #f3f4f6;
-        --color-light-hover: #f87171;
-        --color-dark-hover: #f87171;
+        --color: light-dark(#020617, #fafafa);
+        --color-hover: light-dark(#b91c1c, #f87171);
+        --fondo-nav: light-dark(#e2e8f0, #334155);
+        --fondo-header: light-dark(#e2e8f0, #334155);
     }
 
     .header {
@@ -47,28 +100,18 @@
         align-items: center;
         justify-content: space-around;
         height: 80px;
-        background-color: rgb(22, 54, 54);
+        background-color: var(--fondo-header);
     }
 
     .logo {
-        color: light-dark(var(--color-light), var(--color-dark));
-
-        &:hover {
-            color: light-dark(
-                var(--color-light-hover),
-                var(--color-dark-hover)
-            );
-        }
+        color: var(--color);
     }
 
     .label_menu {
         cursor: pointer;
 
         &:hover {
-            color: light-dark(
-                var(--color-light-hover),
-                var(--color-dark-hover)
-            );
+            color: var(--color-hover);
         }
     }
 
@@ -88,12 +131,12 @@
 
     .nav {
         position: absolute;
+        z-index: 100;
         top: 80px;
-        display: flex;
+        display: none;
         flex-direction: column;
         width: 100%;
         height: calc(100vh - 80px);
-        background-color: red;
     }
 
     .input_menu:checked + .nav {
@@ -109,7 +152,7 @@
         height: 100%;
         padding: 0;
         margin: 0;
-        background-color: rgb(110, 45, 38);
+        background-color: var(--fondo-nav);
     }
 
     .button_tema {
@@ -122,11 +165,35 @@
     }
 
     .a {
-        color: white;
+        color: var(--color);
         text-decoration: none;
 
         &:hover {
-            color: #f87171;
+            color: var(--color-hover);
+        }
+    }
+
+    .section_scheme {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .span_scheme {
+    }
+
+    .fieldset_scheme {
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .label_scheme {
+        cursor: pointer;
+
+        &:hover {
+            color: var(--color-hover);
         }
     }
 </style>
