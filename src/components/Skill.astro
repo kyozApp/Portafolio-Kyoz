@@ -3,12 +3,13 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
     nombre: string;
+    svg: string;
 }
-const { nombre } = Astro.props;
+const { svg, nombre } = Astro.props;
 ---
 
 <button class="button">
-    <Icon name={nombre} size={50} />{nombre}
+    <Icon name={svg} size={50} />{nombre}
 </button>
 
 <style>
