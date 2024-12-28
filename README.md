@@ -26,6 +26,12 @@ pnpm create astro@latest
    pnpx @astrojs/upgrade
    ```
 
+3. Instala para procesar las imagenes de Astro:
+
+   ```bash
+   pnpm add sharp
+   ```
+
 ---
 
 ## 3️⃣ **Inicializar Git y Configurar el Repositorio**
