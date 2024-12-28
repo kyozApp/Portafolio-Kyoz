@@ -2,9 +2,83 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Profile from "../components/Profile.astro";
+import Skill from "../components/Skill.astro";
 ---
 
 <Layout title="Home" description="Portfolio personal de un desarrollador web">
-	<Header/>
-	<Profile/>
+	<Header />
+	<Profile />
+	<section class="section_skill">
+		<h2>&starf; Habilidades</h2>
+		<article class="skill">
+			<Skill nombre="astro" />
+			<Skill nombre="html" />
+			<Skill nombre="css" />
+			<Skill nombre="tailwind" />
+			<Skill nombre="javascript" />
+			<Skill nombre="typescript" />
+			<Skill nombre="honojs" />
+			<Skill nombre="cloudfare" />
+			<Skill nombre="sqlite" />
+			<Skill nombre="mongo" />
+			<Skill nombre="mysql" />
+			<Skill nombre="postgresql" />
+			<Skill nombre="github" />
+			<Skill nombre="docker" />
+			<Skill nombre="java" />
+			<Skill nombre="spring" />
+			<Skill nombre="django" />
+			<Skill nombre="python" />
+		</article>
+	</section>
 </Layout>
+
+<style>
+	:root {
+		--fondo: light-dark(#cbd5e1, #1e293b);
+	}
+
+	.section_skill {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		padding: 0 50px;
+		background-color: var(--fondo);
+	}
+
+	.skill {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0 0 50px 10px;
+		gap: 10px;
+	}
+
+	/* Tamaño para sm */
+	@media (640px < width) {
+		.section_skill {
+			padding: 0 90px;
+		}
+	}
+
+	/* Tamaño para md */
+	@media (768px < width) {
+		.section_skill {
+			padding: 0 150px;
+		}
+	}
+
+	/* Tamaño para lg */
+	@media (1024px < width) {
+		.section_skill {
+			padding: 0 200px;
+		}
+	}
+
+	/* Tamaño para xl */
+	@media (1280px < width) {
+	}
+
+	/* Tamaño para 2xl */
+	@media (1536px < width) {
+	}
+</style>

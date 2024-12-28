@@ -30,6 +30,13 @@ pnpm create astro@latest
 
    ```bash
    pnpm add sharp
+   pnpm astro add astro-icon
+   ```
+
+4. Instala para los iconos de Astro:
+
+   ```bash
+   pnpm astro add astro-icon
    ```
 
 ---
